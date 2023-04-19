@@ -30,14 +30,14 @@ def get_all_members():
     members = jackson_family.get_all_members()
     return jsonify(members), 200
 
-@app.route('/member/<int_id>', methods=['GET'])
+@app.route('/member/<int:id>', methods=['GET'])
 def get_specific_member(id):
     member = jackson_family.get_member(id)
     return jsonify(member), 200
     
 
 @app.route('/member', methods=['POST'])
-def add_member(id):
+def add_member():
     member = request.json #pido datos json a traves de la llamadad
     jackson_family.add_member(member) #guardo datos en member
     return jsonify(""), 200
